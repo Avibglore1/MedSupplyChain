@@ -10,7 +10,16 @@ export default function jwtAuth(req,res,next){
     const token = authHeader.split(" ")[1];
     try {
         const payload = jwt.verify(token,process.env.JWT_SECRET);
-        req.user = payload;
+        if(!payload?.role){
+            return res.status(401).json({
+                error: "UNAUTHORIZED",
+                message: "Token payload missing role"
+            })
+        }
+        req.user = {
+            id: payload.sub ?? null,
+            role: payload.role
+        };
         next();
     } catch (error) {
         return res.status(401).json({message: "Token verification failed"});
