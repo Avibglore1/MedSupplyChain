@@ -7,7 +7,7 @@ import jwt from "jsonwebtoken";
 const generateToken = (role) =>{
     return jwt.sign(
         {id: "123", email: "test@test.com", role},
-        process.env.JWT_SECRET 
+        process.env.JWT_SECRET || supersecretkey
     )
 };
 
