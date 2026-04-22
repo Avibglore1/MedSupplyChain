@@ -7,7 +7,7 @@ services:
       - "5000:5000"
     environment:
       - MONGO_URI=mongodb://mongo:27017/mscb
-      - JWT_SECRET=secret
+      - JWT_SECRET=supersecretkey
     depends_on:
       - mongo
 
