@@ -1,0 +1,5 @@
+export const ROLES = {
+GOV : "GOV",
+MANUFACTURER: "MANUFACTURER",
+PHARMACY: "PHARMACY"
+}
