@@ -1,5 +1,7 @@
 import dotenv from "dotenv";
 dotenv.config();
+
+process.env.JWT_SECRET = "supersecretkey";
 import request from "supertest";
 import app from "./../app.js";
 import jwt from "jsonwebtoken";
@@ -7,7 +9,7 @@ import jwt from "jsonwebtoken";
 const generateToken = (role) =>{
     return jwt.sign(
         {id: "123", email: "test@test.com", role},
-        process.env.JWT_SECRET || "supersecretkey"
+        process.env.JWT_SECRET
     )
 };
 
